@@ -30,3 +30,35 @@ alter pipe cloudtrail_pipe refresh;
     pipe_name=>'public.cloudtrail_pipe'
   ));
 
+create view cloudtrail as
+select 
+    VALUE:eventTime::TIMESTAMP as eventTime, 
+    VALUE:eventVersion::string as eventVersion,
+    VALUE:userIdentity::variant as userIdentity,
+    VALUE:eventSource::string as eventSource,
+    VALUE:eventName::string as eventName,
+    VALUE:awsRegion::string as awsRegion,
+    VALUE:sourceIPAddress::string as sourceIPAddress,
+    VALUE:userAgent::string as userAgent,
+    VALUE:errorCode::string as errorCode,
+    VALUE:errorMessage::string as errorMessage,
+    VALUE:requestParameters::variant as requestParameters,
+    VALUE:responseElements::variant as responseElements,
+    VALUE:additionalEventData::variant as additionalEventData,
+    VALUE:requestID::string as requestID,
+    VALUE:eventID::string as eventID,
+    VALUE:eventType::string as eventType,
+    VALUE:apiVersion::string as apiVersion,
+    VALUE:managementEvent::variant as managementEvent,
+    VALUE:resources::variant as resources,
+    VALUE:recipientAccountId::string as recipientAccountId,
+    VALUE:serviceEventDetails::variant as serviceEventDetails,
+    VALUE:sharedEventID::string as sharedEventID,
+    VALUE:eventCategory::string as eventCategory,
+    VALUE:vpcEndpointId::string as vpcEndpointId,
+    VALUE:addendum::string as addendum,
+    VALUE:sessionCredentialFromConsole::string as sessionCredentialFromConsole,
+    VALUE:edgeDeviceDetails::string as edgeDeviceDetails,
+    VALUE:tlsDetails::variant as tlsDetails,
+    VALUE:insightDetails::variant as insightDetails
+  from public.cloudtrail_raw , LATERAL FLATTEN(input => record:Records);
