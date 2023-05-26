@@ -46,6 +46,7 @@ resource "aws_s3_bucket_policy" "main" {
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
+  count = var.SNOWFLAKE_SNOWPIPE_NOTIFICATION_CHANNEL == "" ? 0 : 1
   bucket = aws_s3_bucket.main.id
 
   queue {

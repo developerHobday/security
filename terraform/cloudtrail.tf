@@ -5,4 +5,5 @@ resource "aws_cloudtrail" "main" {
   s3_bucket_name                = aws_s3_bucket.main.id
   include_global_service_events = false
   tags = local.common_tags
+  depends_on = [aws_s3_bucket_policy.main]
 }

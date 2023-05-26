@@ -37,3 +37,8 @@ select * from cloudtrail where eventName in (
 'RevokeSecurityGroupEgress',
 'RevokeSecurityGroupIngress'
 );
+
+select * from cloudtrail
+WHERE eventTime between '2023-05-26 16:00' and '2023-05-26 17:00'
+AND eventName = 'PutBucketNotification'
+LIMIT 100;

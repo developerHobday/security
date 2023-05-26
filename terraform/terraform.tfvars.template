@@ -1,0 +1,9 @@
+project = "yourproject"
+owner   = "yourname"
+AWS_ACCOUNT =
+
+# snowflake user
+AWS_STORAGE_IAM_USER_ARN=
+AWS_STORAGE_EXTERNAL_ID=
+
+SNOWFLAKE_SNOWPIPE_NOTIFICATION_CHANNEL=
