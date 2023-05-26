@@ -17,6 +17,10 @@ variable "SNOWFLAKE_ACCOUNT" {
 variable "SNOWFLAKE_REGION" {
   type = string
 }
+variable "SNOWFLAKE_SNOWPIPE_NOTIFICATION_CHANNEL" {
+  type = string
+}
+
 
 variable "AWS_ACCOUNT" {
   type = string
